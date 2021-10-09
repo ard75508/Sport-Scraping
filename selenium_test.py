@@ -19,6 +19,7 @@ class Team:
         self.name = name
         self.league = league
         self.schedule = schedule
+        #test Team
 
 
 teamList = []
