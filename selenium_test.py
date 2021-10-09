@@ -43,6 +43,7 @@ driver.get("https://www.espn.com/search/_/q/{}".format(userCity))
 
 html = driver.page_source
 soup = BeautifulSoup(html, "lxml")
+#test soup
 
 
 def returnSchedule(urlStr):
