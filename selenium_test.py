@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.options import Options
 import time
 from bs4 import BeautifulSoup
 import json
+#test
 
 # userCity = input("Enter a city: ")
 userCity = "los angeles"
@@ -48,16 +49,25 @@ soup = BeautifulSoup(html, "lxml")
 
 
 def returnSchedule(urlStr):
+    schedule1 = ""
     driver.get(urlStr)
     try:
         schdeule = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(
                 (By.CLASS_NAME, "club-schedule"))
         )
-
-        print(schdeule.text)
+        schedule1 = schdeule.text
+        #print(schedule1)
+        #print(schdeule.text)
     except:
         driver.quit()
+    
+    for character in schedule1:
+        if character == "@":
+            sam = schedule1.replace("@", "Away")
+            print(sam)
+        
+        
 
 
 try:
@@ -90,6 +100,7 @@ try:
                 'link': link
             }
             teamList.append(newTeam)
+            
 
     print("")
     print(teamList)
@@ -109,12 +120,15 @@ except:
 
 returnSchedule(teamList[0]['link'])
 
+    
+
 # for team in teamList:
 #     returnSchedule(team['link'])
 
 time.sleep(2)
 
 driver.quit()
+
 
 # write python object to new json file
 # WORKS
